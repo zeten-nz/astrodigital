@@ -1,7 +1,15 @@
 import { useState } from "react";
+import LanguageDropdown from "./LanguageDropdown";
 import { NavLink } from "react-router-dom";
 import search from "../assets/icons/search.png";
-import homeIcon from "../assets/icons/home.png"; // example
+import homeIcon from "../assets/icons/home.png";
+import labIcon from "../assets/icons/lab.png";
+import courseIcon from "../assets/icons/course.png";
+import quizIcon from "../assets/icons/quiz.png";
+import profileIcon from "../assets/icons/profile.png";
+import AuthButton from "./AuthButton";
+
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +21,7 @@ const Navbar = () => {
   return (
     <>
       {/* NAVBAR */}
-      <div className="flex items-center justify-between px-4 py-3 bg-[#0B1120] text-white">
+      <div className="flex items-center justify-between px-4 py-3 bg-[#0B1120] text-white sticky top-0 z-50">
         
         {/* Left */}
         <div className="flex items-center gap-3">
@@ -30,12 +38,8 @@ const Navbar = () => {
 
         {/* Right */}
         <div className="flex items-center gap-3">
-          <img
-            src={search}
-            alt="Search"
-            className="w-5 h-5 hover:cursor-pointer"
-          />
-          <div className="w-8 h-8 rounded-full bg-gray-500 hover:cursor-pointer"></div>
+           <LanguageDropdown />
+           <AuthButton />
         </div>
       </div>
 
@@ -79,8 +83,47 @@ const Navbar = () => {
               }
               onClick={() => setIsOpen(false)}
             >
-              <img src={homeIcon} className="w-5 h-5" />
+              <img src={courseIcon} className="w-5 h-5" />
               Courses
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/labs"
+              className={({ isActive }) =>
+                `${base} ${isActive ? active : inactive}`
+              }
+              onClick={() => setIsOpen(false)}
+            >
+              <img src={labIcon} className="w-5 h-5" />
+              Virtual Lab
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/quizzes"
+              className={({ isActive }) =>
+                `${base} ${isActive ? active : inactive}`
+              }
+              onClick={() => setIsOpen(false)}
+            >
+              <img src={quizIcon} className="w-5 h-5" />
+              Quizs
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                `${base} ${isActive ? active : inactive}`
+              }
+              onClick={() => setIsOpen(false)}
+            >
+              <img src={profileIcon} className="w-5 h-5" />
+              Profile
             </NavLink>
           </li>
 

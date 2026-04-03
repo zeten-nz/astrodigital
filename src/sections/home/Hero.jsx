@@ -1,28 +1,44 @@
+import "./hero.css";
+import heroBg from "../../assets/background/hero-bg.png";
+import { useTranslation } from "react-i18next";
+
 const Hero = () => {
+  const { t } = useTranslation();
   return (
-    <section className="px-4 mt-4">
-      <div className="bg-[#111827] rounded-2xl p-5 flex items-center justify-between">
-        
-        {/* LEFT */}
-        <div className="max-w-[60%]">
-          <h2 className="text-lg font-semibold leading-snug">
-            Introduction to Programming
-          </h2>
+    <section className="hero relative rounded-xl overflow-hidden mt-4 px-6 py-12">
 
-          <p className="text-gray-400 text-sm mt-2">
-            Learn the basics of programming using Python
-          </p>
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroBg}
+          alt="hero-bg"
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1322] to-transparent"></div>
+      </div>
 
-          <button className="mt-4 bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg text-sm">
-            Get Started
-          </button>
+      {/* CONTENT */}
+      <div className="relative z-10 max-w-xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          Unlock the <span className="text-blue-400">Cosmos</span> with AI
+        </h2>
+
+        <p className="text-gray-400 mb-6">
+          Personalized astronomical journeys
+          powered by artificial intelligence.
+          Experience the universe through
+          scientific precision and immersive
+          learning.
+        </p>
+
+        {/* SEARCH */}
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search constellations..."
+            className="w-full h-12 rounded-xl pl-4 pr-4 bg-[#232a3a] text-white outline-none focus:ring-2 focus:ring-blue-400"
+          />
         </div>
-
-        {/* RIGHT */}
-        <div className="w-20 h-20 bg-gray-600 rounded-xl flex items-center justify-center">
-          🎯
-        </div>
-
       </div>
     </section>
   );
